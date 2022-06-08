@@ -82,9 +82,10 @@ public class SpringShopJpa1Application implements CommandLineRunner {
 		
 //		articleRepository.updateArticle("Huawei", (long) 4);
 		
-		articleRepository.updateArticles("Huawei", (long) 4);
+//		articleRepository.updateArticles("Huawei", (long) 4);
 		
-	
+	articleRepository.save(new Article((long) 4,"téléphone","Huawei",80,categoryRepository.findByName("smartphone")));
+		
 		for (Category categories: categoryRepository.listCategoriesAsc()) {
 				System.out.println(categories);
 			};

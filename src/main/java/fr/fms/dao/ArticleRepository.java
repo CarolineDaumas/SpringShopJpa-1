@@ -27,8 +27,8 @@ public interface ArticleRepository extends JpaRepository<Article,Long> {
 //	@Modifying
 //	public int updateArticle(@Param("description")String description, @Param("id") Long id);
 //	
-	@Query ("update A from Article A set A.brand =:x where A.id= :y")
-	@Modifying
-	public Article updateArticles(@Param("x") String kw, @Param("y") Long y);
-	
+//	@Query ("update A from Article A set A.brand =:x where A.id= :y")
+//	@Modifying
+//	public Article updateArticles(@Param("x") String kw, @Param("y") Long y);
+//	
 }

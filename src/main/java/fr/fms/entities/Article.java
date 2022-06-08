@@ -26,6 +26,19 @@ public class Article implements Serializable {
 
 	
 	
+	
+	public Article(Long id, String description, String brand, double price, Category category) {
+		super();
+		this.id = id;
+		this.description = description;
+		this.brand = brand;
+		this.price = price;
+		this.category = category;
+	}
+
+
+
+
 	public Article(String description, String brand, double price, Category category) {
 		
 		this.description = description;
