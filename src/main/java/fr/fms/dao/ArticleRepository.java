@@ -21,6 +21,8 @@ public interface ArticleRepository extends JpaRepository<Article,Long> {
 	public List<Article> findByCategoryId (Long categoryId);
 	public List<Article> findByBrandAndDescription(String brand, String description);
 	public void deleteById (Long id);
+	
+	public List<Article> findAll();
 	//public Article update(Article article);
 	
 //	@Query("update Article a set a.description = :description where a.id = :id")

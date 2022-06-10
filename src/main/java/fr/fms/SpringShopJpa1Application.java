@@ -1,13 +1,19 @@
 package fr.fms;
 
+import java.awt.print.Pageable;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 
 import fr.fms.dao.ArticleRepository;
 import fr.fms.dao.CategoryRepository;
 import fr.fms.entities.Article;
+import fr.fms.entities.ArticlePagination;
 import fr.fms.entities.Category;
 
 @SpringBootApplication
@@ -17,7 +23,10 @@ public class SpringShopJpa1Application implements CommandLineRunner {
 	private CategoryRepository categoryRepository;
 	
 	@Autowired
-	private ArticleRepository articleRepository; 
+	private ArticleRepository articleRepository;
+	
+	@Autowired
+	private ArticlePagination articlePagination;
 
 	public static void main(String[] args) {
 		SpringApplication.run(SpringShopJpa1Application.class, args);
@@ -76,26 +85,33 @@ public class SpringShopJpa1Application implements CommandLineRunner {
 		//articleRepository.deleteById((long) 5);
 		
 		
-//		Article article = articleRepository.getById((long) 4);
-//		article.setBrand("Huawei");
-//		articleRepository.update(article);
+////		Article article = articleRepository.getById((long) 4);
+////		article.setBrand("Huawei");
+////		articleRepository.update(article);
+//		
+////		articleRepository.updateArticle("Huawei", (long) 4);
+//		
+////		articleRepository.updateArticles("Huawei", (long) 4);
+		articleRepository.save(new Article((long) 4,"téléphone","Huawei",80,categoryRepository.findByName("smartphone")));
+//		
+//		
+//		for (Category categories: categoryRepository.listCategoriesAsc()) {
+//				System.out.println(categories);
+//			};
+//		
+//
+//		for (Category categorie: categoryRepository.listCategoriesDesc()) {
+//				System.out.println(categorie);
+//				};
+//			
 		
-//		articleRepository.updateArticle("Huawei", (long) 4);
-		
-//		articleRepository.updateArticles("Huawei", (long) 4);
-		
-	articleRepository.save(new Article((long) 4,"téléphone","Huawei",80,categoryRepository.findByName("smartphone")));
-		
-		for (Category categories: categoryRepository.listCategoriesAsc()) {
-				System.out.println(categories);
-			};
-		
-
-		for (Category categorie: categoryRepository.listCategoriesDesc()) {
-				System.out.println(categorie);
-				};
-			
+		for (Article articles: articleRepository.findAll()) {
+			System.out.println(articles);
 		}
+		
+		
+		
+	}
 	}
 
 
